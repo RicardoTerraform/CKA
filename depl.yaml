@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginxrs
+  name: nginxrs
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginxrs
+  template:
+    metadata:
+      labels:
+        app: nginxrs
+    spec:
+      containers:
+      - image: nginx
+    
