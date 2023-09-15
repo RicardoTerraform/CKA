@@ -1,4 +1,4 @@
 Create
-![Alt Text](./images/teste.PNG)
+![Alt Text](/images/teste.PNG)
 
 
