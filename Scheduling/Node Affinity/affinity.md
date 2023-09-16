@@ -9,7 +9,7 @@ Dois tipos de nodeAffinity:
 	Caso o Scheduler não encontre nenhum node com o mesmo tipo de affinity que o pod, ele vai colacar o pod num node que esteja disponível
 
 
-How to affinity in pod file:
+**How to affinity in pod file:**
 ```
 Spec:
 	Container:
