@@ -29,6 +29,7 @@ EXISTEM 3 TIPOS DE "TAINT-EFFECT":
 	
 
 How to tolerate in pod file:
+
 Spec:
 	Container:
 		- Name: nginx-app
@@ -41,6 +42,7 @@ Spec:
 		
 
 COMANDOS:
+
 Remover Taint do NODE
 #Kubectl taint node node-name "colar aqui o tain-name todo"-node/node-name untainted
 
