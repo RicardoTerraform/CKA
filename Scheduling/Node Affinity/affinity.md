@@ -1,4 +1,4 @@
-**AFFINITY**
+# AFFINITY
 
 Ao utilizarmos "affinity" quando o POD A e o Node A tem a mesma label, automáticamente o POD A vai ser Colocado no NODE A. 
 
@@ -32,6 +32,6 @@ Spec:
 
 - Com o affinity a única coisa que garante é que se um pod tiver a mesma label que um determiando node ele vai ser automáticamente colocado lá. Mas não garante que outros pods sem label também sejam colocados lá
 
-COMANDOS:
+**COMANDOS:**
 
 Kubectl label node 'nodename' color=blue
