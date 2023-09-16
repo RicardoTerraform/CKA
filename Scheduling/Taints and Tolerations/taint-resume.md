@@ -48,7 +48,9 @@ Spec:
 **COMANDOS:**
 
 Remover Taint do NODE
+
 #Kubectl taint node <node-name> "colar aqui o tain-name todo"-node/node-name untainted
 
 Adicionar Taint ao NODE
+
 #Kubectl taint nodes <node-name> key=value:<taint-effect>
