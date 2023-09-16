@@ -30,7 +30,8 @@ EXISTEM 3 TIPOS DE "TAINT-EFFECT":
 
 How to tolerate in pod file:
 
-```Spec:
+```
+Spec:
 	Container:
 		- Name: nginx-app
 		Image: nginx 
@@ -38,7 +39,8 @@ How to tolerate in pod file:
 		- Key: "app"
 		Operator: "Equal"
 		Value: "blue"
-		Effect: "NoSchedule"```
+		Effect: "NoSchedule"
+```
 		
 
 # COMANDOS:
