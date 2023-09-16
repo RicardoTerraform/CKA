@@ -30,7 +30,7 @@ EXISTEM 3 TIPOS DE "TAINT-EFFECT":
 
 How to tolerate in pod file:
 
-Spec:
+```Spec:
 	Container:
 		- Name: nginx-app
 		Image: nginx 
@@ -38,10 +38,10 @@ Spec:
 		- Key: "app"
 		Operator: "Equal"
 		Value: "blue"
-		Effect: "NoSchedule"
+		Effect: "NoSchedule"```
 		
 
-COMANDOS:
+# COMANDOS:
 
 Remover Taint do NODE
 #Kubectl taint node <node-name> "colar aqui o tain-name todo"-node/node-name untainted

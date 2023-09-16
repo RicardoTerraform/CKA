@@ -17,4 +17,5 @@ spec:
     spec:
       containers:
       - image: nginx
+        imagePullPolicy: Never
     
