@@ -15,7 +15,19 @@ Create POD with ports
 Para contar o número de pods podemos utilizar o seguinte comando
 #Kubectl get pods --no-headers | wc -l
 
-
+########################################################################
 DEPLOYMENT
+Create a deployment
+#kubectl create deployment <deploy-name> --image=<image:version> --replicas=3
+
+########################################################################
 SERVICES
+
+########################################################################
+TAINT & TOLERATION
+Remover Taint do NODE
+#Kubectl taint node node-name "colar aqui o tain-name todo"-node/node-name untainted
+
+Adicionar Taint ao NODE
+#Kubectl taint nodes node-name key=value:taint-effect
 
