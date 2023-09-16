@@ -1,25 +1,21 @@
 # TAINTS & TOLERATIONS
 
 Isto é uma relação entre pod e nodes
-
-Tains: São adicionados aos Nodes
-
-Tolerations: São adicionados aos pods
+1. Tains: São adicionados aos Nodes
+2. Tolerations: São adicionados aos pods
 
 Exemplo:
 
 Imaginando que temos 3 nodes já criados, de seguida vamos proceder à criação de 5 pods (5), caso não haja restrições(Taints) os 5 pods são criados ao longo dos nodes de forma balanceada. Isto é uma situação normal sem Taints
 
-Vamos agora imaginar o seguinte cenário:
+**Vamos agora imaginar o seguinte cenário:**
 1. Node A está TAINT com uma label=red
 2. Node B está TAINT com uma label="blue"
 3. Node C está "neutro"(sem taint)
 
-POD A está com uma label=red
-
-POD B está com uma label="blue"
-
-POD C,D,E estão "neutro"(sem toleration)
+4. POD A está com uma label=red
+5. POD B está com uma label="blue"
+6. POD C,D,E estão "neutro"(sem toleration)
 
 - O kubernete Scheduler quando for organizar os  criados pelos respetivos Noeds, o POD A ao fazer match com a label do Node A vai pretencer a esse Node (o Node A deixa passar), mas se por exemplo o POD A fosse tentar entrar no Node B, como as labels não fazem match o Node B não iria deixar entrar o POD A.
 Referir uma coisa importante, ao utilizarmos taints and toleration não significa que o POD A vai entrar automáticamente no Node A. 
