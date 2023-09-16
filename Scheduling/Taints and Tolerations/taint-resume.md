@@ -11,12 +11,9 @@ Exemplo:
 Imaginando que temos 3 nodes já criados, de seguida vamos proceder à criação de 5 pods (5), caso não haja restrições(Taints) os 5 pods são criados ao longo dos nodes de forma balanceada. Isto é uma situação normal sem Taints
 
 Vamos agora imaginar o seguinte cenário:
-
-Node A está TAINT com uma label=red
-
-Node B está TAINT com uma label="blue"
-
-Node C está "neutro"(sem taint)
+1. Node A está TAINT com uma label=red
+2. Node B está TAINT com uma label="blue"
+3. Node C está "neutro"(sem taint)
 
 POD A está com uma label=red
 
