@@ -34,4 +34,4 @@ Spec:
 
 COMANDOS:
 
-Kubectl label node <nodename> color=blue
+Kubectl label node 'nodename' color=blue
