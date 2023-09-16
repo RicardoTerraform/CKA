@@ -1,4 +1,4 @@
-AFFINITY
+**AFFINITY**
 
 Ao utilizarmos "affinity" quando o POD A e o Node A tem a mesma label, automáticamente o POD A vai ser Colocado no NODE A. 
 
