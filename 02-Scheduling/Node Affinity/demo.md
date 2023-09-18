@@ -23,7 +23,7 @@
 - I created another node 'worker2' to be more effective in this demo
 
 ![Alt Text](/00-images/Scheduling/affinity6.PNG)
-- Any node was Taint, so the pods can be placed in any node available
+- Any node was Tainted, so the pods can be placed in any node available
 
 5º Set Node Affinity to the red deployment to place the pods on worker1 only
 
@@ -32,7 +32,7 @@
 - The image above we can see the 3 pods where placed in each node available, let's place it only on worker1 node.
 
 ![Alt Text](/00-images/Scheduling/affinity8.PNG)
-- I added some properties in the deployred file, after that I replace the deployment again(delete and create), and as we can see now the 3 pods are placed in the worker1 node
+- I added some properties in the deployred file, after that I replaced the deployment again(delete and create), and as we can see now the 3 pods are placed in the worker1 node
 
 
 
