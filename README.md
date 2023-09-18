@@ -41,4 +41,5 @@ Join the nodes to the cluster
 
 1. multipass shell master
 2. microk8s kubectl get nodes
+
 ![Alt Text](/images/microk8s/micro1.PNG)
