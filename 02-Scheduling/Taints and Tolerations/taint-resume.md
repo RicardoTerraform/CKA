@@ -49,7 +49,7 @@ Spec:
 
 Remover Taint do NODE
 
-#Kubectl taint node 'node-name' "colar aqui o tain-name todo"-node/node-name untainted
+#Kubectl taint node 'node-name' "colar aqui o tain-name todo"-
 
 Adicionar Taint ao NODE
 

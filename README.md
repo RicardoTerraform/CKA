@@ -7,7 +7,7 @@
 **Create the vms**
 1. multipass launch -n master -m 2G -c 2 -d 4G
 2. multipass launch -n worker1 -m 2G -c 2 -d 4G
-3. multipaa list
+3. multipass list
 
 ![Alt Text](/00-images/microk8s/micro.PNG)
 
