@@ -27,6 +27,7 @@ To create the master I will install microk8s and get some basic configuration an
 10. source ~/.bash_aliases
 11. microk8s enable dns storage
 12. sudo microk8s add-node
+- save this information
 
 **Install microk8s worker1 node**
 
