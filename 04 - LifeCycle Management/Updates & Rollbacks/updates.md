@@ -11,7 +11,7 @@
 - UPGRADE: Ao utilizarmos o **Rolling Update**, inicialmente no deployment ele cria um replicaset com os 5 pods(ex:) e quando está a fazer updating ele cria uma nova replicaset com os novos pods da nova versão. se utilizarmos o comando 'kubectl get replicasets' podemos ver as duas criadas, uma com 0 pods (eliminados) e outra já com os 5 pods
 
 - ROLLBACK:
-Quando utilizamos o comando 'kubectlundo no rollback', como referi em cima quando ele cria uma nova versão, ele utiliza um replicaset diferente. Então quando ele utiliza o undo ele vai buscar o mesmo replicaset que tinha sido eliminado anteriormente, o replicaset não fica eliminado, o que acontece é que fica com 0 pods.
+Quando utilizamos o comando 'kubectl undo no rollback', como referi em cima quando ele cria uma nova versão, ele utiliza um replicaset diferente. Então quando ele utiliza o undo ele vai buscar o mesmo replicaset que tinha sido eliminado anteriormente, o replicaset não fica eliminado, o que acontece é que fica com 0 pods.
 
 
 ### Updating image
