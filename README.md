@@ -9,7 +9,7 @@
 2. multipass launch -n worker1 -m 2G -c 2 -d 4G
 3. multipaa list
 
-![Alt Text](/00 - images/microk8s/micro.PNG)
+![Alt Text](/00-images/microk8s/micro.PNG)
 
 **Install microk8s master node**
 
@@ -42,4 +42,4 @@ Join the nodes to the cluster
 1. multipass shell master
 2. microk8s kubectl get nodes
 
-![Alt Text](/00 - images/microk8s/micro1.PNG)
+![Alt Text](/00-images/microk8s/micro1.PNG)
