@@ -26,18 +26,18 @@ Commands:
 ### Fase 1 (create  Secrets)
 
 - Imperative:
-´´´
-		Kubectl create secret generic
+```
+Kubectl create secret generic
 			<secret-name> --from-literal=<key>=<value>
 			
 		Ex:
 		Kubectl create secret generic \
 			App-secret --from-literal=DB_Host=mysql
-´´´
+```
 
 - Declarative:
-´´´
-	Kubectl create -f
+```
+Kubectl create -f
 	
 	Secret-data.yaml
 		apiVersion: v1
@@ -47,12 +47,12 @@ Commands:
 		Data:
 			DB_Host: mysql
 			DB_User: root
-            ´´´
+```
 
 		
 ### Secrets in PODS:
 **SECRETS in PODS:**
-´´´	
+```	
 Environment:
 Spec:
 	Containers:
@@ -61,10 +61,10 @@ Spec:
 		envFrom:
 			- secretRef: 
 				name: app-secret
-´´´				
+```				
 				
 **SINGLES ENV:**
-´´´	
+```	
 Spec:
 	Containers:
 		-name : my-app
@@ -75,16 +75,16 @@ Spec:
 		            secretKeyRef:
 					    Name: app-secret
 					    Key: DB_Host
-´´´	
+```	
 
 
 **VOLUME:**
-´´´
+```
 volumes:
 	- name: app-secret-volumes
 	  secret:
 		Name: app-secret
-´´´		
+```		
 
 
 
