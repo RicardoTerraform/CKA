@@ -58,7 +58,7 @@ Spec:
 	Containers:
 		-name : my-app
 		 image: nginx
-		envFrom:
+		 envFrom:
 			- secretRef: 
 				name: app-secret
 ```				

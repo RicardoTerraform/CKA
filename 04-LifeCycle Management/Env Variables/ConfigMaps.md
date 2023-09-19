@@ -14,17 +14,17 @@ Commands:
 ### Fase 1 (create configMap)
 
 - Imperative:
-		´´´
+		```
         Kubectl create configmap
 			<config-name> --from-literal=<key>=<value>
 			
 		Ex:
 		Kubectl create configmap \
 			App-config --from-literal=APP_COLOR=red´
-            ´´´
+           ```
 
 - Declarative:
-´´´
+```
 	Kubectl create -f
 	
 	Config-map.yaml
@@ -35,11 +35,11 @@ Commands:
 		Data:
 			APP_COLOR: red
 			APP_MODE: prod
-´´´		
+```		
 		
 ### ConfigMaps in PODS:
 **NORMAL:**
-´´´
+```
 Environment:
 Spec:
 	Containers:
@@ -48,11 +48,11 @@ Spec:
 		envFrom:
 			- configMapRef: 
 				name: app-config
-´´´				
+```				
 
 
 **SINGLES ENV:**
-´´´
+```
 Spec:
 	Containers:
 		-name : my-app
@@ -63,12 +63,12 @@ Spec:
 		            configMapKeyRef:
 					    Name: app-config
 					    Key: APP_COLOR
-´´´
+```
 
 **VOLUME:**
-´´´
+```
 volumes:
 	- name: app-config-volumes
 	  configMap:
             Name: app-config
-´´´
+```
