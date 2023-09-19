@@ -1,8 +1,8 @@
-1º A RED deployment has already be deployed. Identify the number of pods deployed by it
+1º A RED deployment has already been deployed. Identify the number of pods deployed by it
 
 ![Alt Text](/00-images/lifecycle/update.PNG)
 
-2º Inspect the deployment and identify the current strategy
+2º Inspect the deployment and identify the current strategy type
 
 ![Alt Text](/00-images/lifecycle/update1.PNG)
 
@@ -34,6 +34,6 @@
 7º Change the strategy type to RECREATE and check the behaviour
 
 ![Alt Text](/00-images/lifecycle/update8.PNG)
-- As we can see after I changed the image the all pods were taken down and after that the 5 pods were up
+- As we can see after I changed the image and all pods were taken down and only after that the 5 pods were up
 
 
