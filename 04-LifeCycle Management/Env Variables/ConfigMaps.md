@@ -59,7 +59,7 @@ Spec:
 		 image: nginx
 		 env:
 			-name: App_color
-	            valueFrom:
+	         valueFrom:
 		            configMapKeyRef:
 					    Name: app-config
 					    Key: APP_COLOR
