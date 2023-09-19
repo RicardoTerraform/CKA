@@ -2,16 +2,16 @@
 
 ### NOTE ON SECRETS
 
-(negative) - Secrets are not Encrypted. Only enconded.
+1. (negative) - Secrets are not Encrypted. Only enconded.
 - (negative) - Do not check-in Secret objects to SCM along with code
 
-(negative) -Secrets are not encrypted in ETCD
+2. (negative) -Secrets are not encrypted in ETCD
 - (positive) - Enable encryption at rest
 	
-(negative) -Anyone able to create pods/deployments in the same namespace can access the secrets
+3. (negative) -Anyone able to create pods/deployments in the same namespace can access the secrets
 - (positive) - Configure least-privilege access to Secrets - RBAC
 
-(positive) -Consider third-party secrets store providers AWS, Azure, GCP, Vault
+4. (positive) -Consider third-party secrets store providers AWS, Azure, GCP, Vault
 
 
 **Existem duas fases na configuração de Secrets**
