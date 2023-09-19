@@ -14,14 +14,14 @@ Commands:
 ### Fase 1 (create configMap)
 
 - Imperative:
-		```
+```
         Kubectl create configmap
 			<config-name> --from-literal=<key>=<value>
 			
 		Ex:
 		Kubectl create configmap \
-			App-config --from-literal=APP_COLOR=red´
-           ```
+			App-config --from-literal=APP_COLOR=red
+```
 
 - Declarative:
 ```
