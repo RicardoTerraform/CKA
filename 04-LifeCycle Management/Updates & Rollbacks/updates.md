@@ -31,3 +31,4 @@ Verificar historico de versões e revisões
 Voltar para a versão anterior
 
 #kubectl rollout undo deployment/my-app
+#kubectl rollout undo deployment/my-app --to-revision=3
