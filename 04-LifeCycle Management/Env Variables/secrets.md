@@ -1,36 +1,42 @@
-NOTE ON SECRETS
-Secrets are not Encrypted. Only enconded.
-	Do not check-in Secret objects to SCM along with code
+# Secrets
 
-Secrets are not encrypted in ETCD
-	Enable encryption at rest
+### NOTE ON SECRETS
+
+(negative) - Secrets are not Encrypted. Only enconded.
+- (negative) - Do not check-in Secret objects to SCM along with code
+
+(negative) -Secrets are not encrypted in ETCD
+- (positive) - Enable encryption at rest
 	
-Anyone able to create pods/deployments in the same namespace can access the secrets
-	Configure least-privilege access to Secrets - RBAC
+(negative) -Anyone able to create pods/deployments in the same namespace can access the secrets
+- (positive) - Configure least-privilege access to Secrets - RBAC
 
-Consider third-party secrets store providers AWS, Azure, GCP, Vault
+(positive) -Consider third-party secrets store providers AWS, Azure, GCP, Vault
 
 
-Existem duas fases na configuração de Secrets
-1ºcreate
-2ºinject
+**Existem duas fases na configuração de Secrets**
+- 1ºcreate
+- 2ºinject
 
 
 Commands:
-	Kubectl get secrets
-	Kubectl describe secrets <name-secret>
+- Kubectl get secrets
+- Kubectl describe secrets 'name-secret'
 
-Fase 1 (create  Secrets)
+### Fase 1 (create  Secrets)
 
-Imperative:
+- Imperative:
+´´´
 		Kubectl create secret generic
 			<secret-name> --from-literal=<key>=<value>
 			
 		Ex:
 		Kubectl create secret generic \
 			App-secret --from-literal=DB_Host=mysql
+´´´
 
-Declarative:
+- Declarative:
+´´´
 	Kubectl create -f
 	
 	Secret-data.yaml
@@ -41,14 +47,12 @@ Declarative:
 		Data:
 			DB_Host: mysql
 			DB_User: root
-		
-	Commands:
-		Kubectl get secrets
-		
-		Kubectl describe secrets
-		
+            ´´´
 
-SECRETS in PODS:
+		
+### Secrets in PODS:
+**SECRETS in PODS:**
+´´´	
 Environment:
 Spec:
 	Containers:
@@ -57,29 +61,33 @@ Spec:
 		envFrom:
 			- secretRef: 
 				name: app-secret
+´´´				
 				
-				
-SINGLES ENV:
+**SINGLES ENV:**
+´´´	
 Spec:
 	Containers:
 		-name : my-app
 		 image: nginx
-		env:
+		 env:
 			-name: App_sec
-	                       valueFrom:
-		                       secretKeyRef:
-					Name: app-secret
-					Key: DB_Host
+	            alueFrom:
+		            secretKeyRef:
+					    Name: app-secret
+					    Key: DB_Host
+´´´	
 
 
-VOLUME:
-
+**VOLUME:**
+´´´
 volumes:
 	- name: app-secret-volumes
-	secret:
+	  secret:
 		Name: app-secret
-		
-		
+´´´		
+
+
+
 ENCODE secrets
 
 Echo -n 'mysql' | base64
