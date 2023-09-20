@@ -49,3 +49,6 @@ spec:
     image: busybox:1.28
     command: ['sh', '-c', 'until nslookup mydb; do echo waiting for mydb; sleep 2; done;']
 ```
+
+
+- Now this could be, you know, anything in real life, and this could be things that, you know, prepare a database or prepare some startup scripts, stuff like that. And that is, that has to be run before the actual application comes up.
