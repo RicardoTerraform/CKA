@@ -2,7 +2,7 @@
 
 - Podemos configurar um kubelet sem ter o kube-apiserver.
 - Podemos criar um kubelet para ler os pods desde a diretoria seguinte: /etc/kubernetes/manifest
-- Esses pods que são gerados sem intervenção do kube-apiserver são chamdados de static pods
+- Esses pods que são gerados sem intervenção do kube-apiserver são chamadados de static pods
 - Não é possível criar réplicas, deployments ou mesmo serviços (porque estes componentes tem outras arquiteturas por detrás)
 - Kubelet apenas understand pod
 - Para verificar se um pod é static podemos listar todos os pods e Todos os pods que terminarem com o mesmo nome que o node significa que é static.
