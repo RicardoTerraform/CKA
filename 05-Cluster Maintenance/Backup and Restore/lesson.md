@@ -58,8 +58,8 @@ ls /var/lib/etcd-from-backup
 only to check if the backup is there
 ```
 
-- analisar etcd yaml, analisar o volume e validar/alterar para a nova diretoria
-- ou então apenas alterar a diretoria --data-dir para a nova
+- analisar etcd yaml, analisar o volume e validar/alterar para a nova diretoria(caso seja static)
+- ou então apenas alterar a diretoria --data-dir para a nova (external) ectd.service
 
 3. systemctl daemono-reload
 4. service etcd restart
