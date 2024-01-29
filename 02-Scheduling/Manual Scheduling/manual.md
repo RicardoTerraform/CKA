@@ -1,6 +1,6 @@
 ## Manual Scheduling:
 
-- Podmos indicar para qual NODE queremos que o POD seja criado
+- Podemos indicar para qual NODE queremos que o POD seja criado
 
 ```
 nodeName: node01
@@ -36,5 +36,5 @@ metadata:
 target:
   apiVersion: v1
   kind: Node
-  **name: node02**
+  **name: node01**
 ```
