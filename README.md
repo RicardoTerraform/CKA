@@ -13,7 +13,7 @@ I followed the step-by-step from this link:
 https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worker-nodes-to-the-cluster
 
 
-1. Step #1
+1. Step #1 Disable swap ON EACH NODE
 
     ```
     sudo swapoff -a
@@ -32,7 +32,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     *if one day I need the swap again I just need to run: sudo systemctl unmask swapfile.swap
     ```
 
-2. Set up the IPV4 bridge on all nodes
+2. Set up the IPV4 bridge on EACH NODE
 
     ```
     cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -54,7 +54,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     sudo sysctl --system
     ```
 
-3. Install kubelet, kubeadm, and kubectl on each node
+3. Install kubelet, kubeadm, and kubectl ON EACH NODE
 
     ```
     sudo apt-get update
@@ -70,7 +70,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     sudo apt install -y kubelet kubeadm kubectl
     ```
 
-4. Install Docker
+4. Install Docker ON EACH NODE
 
     ```
     sudo apt install docker.io
@@ -85,7 +85,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     sudo systemctl enable kubelet.service
     ```
 
-5. Initialize the Kubernetes cluster on the master node
+5. Initialize the Kubernetes cluster on THE MASTER NODE
 
     ```
     sudo kubeadm config images pull
@@ -97,29 +97,36 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
     ```
-    
 
-6. Multipass restart master
-7. multipass shell master
-8. microk8s status --wait-ready
-9. echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
-10. source ~/.bash_aliases
-11. microk8s enable dns storage
-12. sudo microk8s add-node
-- save this information
+6. Configure kubectl and Calico
 
-**Install microk8s worker1 node**
+    I followed this link: https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart
 
-Join the nodes to the cluster 
+    ```
+    kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/tigera-operator.yaml
 
-1. multipass shell worker1
-2. sudo snap install microk8s --classic
-3. sudo microk8s join 172.27.97.226:25000/65cb5c78f450b329dae84b78a60fd097/26fcb251c28d
-4. exit
+    kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/custom-resources.yaml
+    ```
+7. Add worker nodes to the cluster
 
-**Check it out if everything is working properly**
+    ```
+    * Access the workers node and run the command that was given above:
+    kubeadm join 192.168.*.*:6443 --token *********** \
+        --discovery-token-ca-cert-hash sha256:853d83e8d5ad**************************
+    ```
+8. Verify the cluster and test
 
-1. multipass shell master
-2. microk8s kubectl get nodes
+    ```
+    *on master node:
 
-![Alt Text](/00-images/microk8s/micro1.PNG)
+    Kubectl get nodes
+    Kubectl get pods -A
+
+
+    * We also need to run the follow comand: 
+    sudo apt install linux-modules-extra-raspi
+    ```
+
+![Alt Text](/00-images/kubeadm/adm1.PNG)
+
+![Alt Text](/00-images/kubeadm/adm2.PNG)
