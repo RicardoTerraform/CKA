@@ -2,20 +2,33 @@
 
 ## Studies and demos
 
-### Multipass Microk8s Cluster on Multiple Nodes
+### Raspberry Pi - Kubeadm Cluster on Multiple Nodes
 
-**Create the vms**
-1. multipass launch -n master -m 2G -c 2 -d 4G
-2. multipass launch -n worker1 -m 2G -c 2 -d 4G
-3. multipass list
+**Install Kubernetes on Ubuntu: Step-by-step process**
+1. 2x Raspberry Pi 5 RAW 8GB - Disk 64GB
 
 ![Alt Text](/00-images/microk8s/micro.PNG)
 
-**Install microk8s master node**
+**Install Kubeadm**
 
-To create the master I will install microk8s and get some basic configuration and modules up and running.
+I followed the step-by-step from this link:
+https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worker-nodes-to-the-cluster
 
-1. multipass shell master
+
+1. Step #1
+    sudo swapoff -a
+    sudo sed -i '/ swap / s/^/#/' /etc/fstab
+    sudo reboot
+
+    After reboot:
+    free
+    *the swap must be with 0's
+
+    In my case those commands didn´t work, after reboot the swapfile kept showing up, so I did it:
+    sudo swapon -s
+    sudo systemctl mask swapfile.swap
+    *if one day I need the swap again I just need to run: sudo systemctl unmask swapfile.swap
+
 2. sudo snap install microk8s --classic
 3. sudo usermod -a -G microk8s $USER
 4. sudo chown -f -R $USER ~/.kube
