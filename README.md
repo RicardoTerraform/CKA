@@ -14,28 +14,43 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
 
 
 1. Step #1
-
+    ´´´
     sudo swapoff -a
-
     sudo sed -i '/ swap / s/^/#/' /etc/fstab
-
     sudo reboot
-
+    ´´´
     After reboot:
-
+    ´´´
     free
-
     *the swap must be with 0's
 
     In my case those commands didn´t work, after reboot the swapfile kept showing up, so I did it:
-
     sudo swapon -s
-
     sudo systemctl mask swapfile.swap
-    
-    *if one day I need the swap again I just need to run: sudo systemctl unmask swapfile.swap
 
-2. sudo snap install microk8s --classic
+    *if one day I need the swap again I just need to run: sudo systemctl unmask swapfile.swap
+    ´´´
+2. Set up the IPV4 bridge on all nodes
+´´´
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
+EOF
+
+sudo modprobe overlay
+sudo modprobe br_netfilter
+
+# sysctl params required by setup, params persist across reboots
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+
+# Apply sysctl params without reboot
+sudo sysctl --system
+´´´
+
 3. sudo usermod -a -G microk8s $USER
 4. sudo chown -f -R $USER ~/.kube
 5. exit
