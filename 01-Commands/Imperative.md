@@ -26,6 +26,11 @@ Para contar o número de pods podemos utilizar o seguinte comando
 #Kubectl get pods --no-headers | wc -l
 ```
 
+Eliminar e voltar a criar o mesmo POD
+```
+#kubectl replace --force -f nginx.yaml
+```
+
 ########################################################################
 ### DEPLOYMENT
 Create a deployment
