@@ -14,6 +14,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
 
 
 1. Step #1
+
     ´´´
     sudo swapoff -a
     sudo sed -i '/ swap / s/^/#/' /etc/fstab
@@ -30,7 +31,9 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
 
     *if one day I need the swap again I just need to run: sudo systemctl unmask swapfile.swap
     ´´´
+
 2. Set up the IPV4 bridge on all nodes
+
 ´´´
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 overlay
