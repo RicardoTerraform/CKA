@@ -10,7 +10,12 @@ Generate POD manifest yaml file (will not create)
 #kubectl run <image-name> --image=<image:version> --dry-run=client -o yaml
 ```
 
-Create POD with label and labelsvi depl  (filter)
+Generate POD manifest yaml file (will create)
+```
+#kubectl run <image-name> --image=<image:version> --dry-run=client -o yaml > red.yaml
+```
+
+Create POD with vi depl  (filter)
 ```
 #kubectl run <image-name> --image=<image:version> --labels="tier=db"
 #kubectl run <image-name> --image=<image:version> --labels="env=prd","tier=frontend"
@@ -25,10 +30,20 @@ Para contar o número de pods podemos utilizar o seguinte comando
 ```
 #Kubectl get pods --no-headers | wc -l
 ```
-
+### Delete a POD
 Eliminar e voltar a criar o mesmo POD
 ```
 #kubectl replace --force -f nginx.yaml
+```
+
+Elimnar um POD
+```
+kubectl delete pod <PODNAME> -n <namespace>
+```
+
+Forçar a eliminação de um POD
+```
+kubectl delete pod <PODNAME> --grace-period=0 --force
 ```
 
 ########################################################################

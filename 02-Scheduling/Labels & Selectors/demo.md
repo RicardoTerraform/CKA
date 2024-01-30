@@ -1,6 +1,6 @@
 Note: I already deployed 4 pods and 1 service with differents labels
 
-POD:[env (1xdev and 2xprd) - tier (1xfrontend)]
+POD:[env (1xdev and 2xprd) - tier (1xdbe)]
 Service:[env (1xprd)]
 
 1º How many pods exist in the "DEV" environment?
