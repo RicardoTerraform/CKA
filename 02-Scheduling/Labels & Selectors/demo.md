@@ -3,7 +3,7 @@
 Note: I already deployed 3 single PODS and 1 Deployment with 2 replicas
 
 ```
-Pod "red" -> tier=db
+Pod "red" -> tier=db & env=dev
 Pod "blue" -> env=dev
 Pod "green -> env=prd
 Deploy "grey" -> env=prd 
