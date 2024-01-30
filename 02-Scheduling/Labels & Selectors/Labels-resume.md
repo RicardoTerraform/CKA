@@ -1,15 +1,17 @@
-**LABELS:**
+## LABELS:
 
 Labels Funcionam como filtros
-- Ex: kubectl get pods --selector env=dev
-- kubectl get pods --selector env=dev, tier=frontend, bu=finance
+```
+Ex: 
+kubectl get pods --selector env=dev
+kubectl get pods --selector env=dev, tier=frontend, bu=finance
+```
 
-
-**SELECTORS:**
+## SELECTORS:
 
 Selectors são usados para fazermos a ligação dos pods com deployments ou principalmente com os serviços.
 
-No selector:
+selector:
 
 - matchLabels: devemos utilizar as labels utilizadas no POD para garantirmos que esse pod pertence mesmo a esse deployment ou serviço
 
