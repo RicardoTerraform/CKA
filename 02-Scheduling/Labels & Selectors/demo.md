@@ -1,29 +1,47 @@
-Note: I already deployed 4 pods and 1 service with differents labels
+## DEMO
 
-POD:[env (1xdev and 2xprd) - tier (1xdbe)]
-Service:[env (1xprd)]
+Note: I already deployed 3 single PODS and 1 Deployment with 2 replicas
 
-1º How many pods exist in the "DEV" environment?
+```
+Pod "red" -> tier=db
+Pod "blue" -> env=dev
+Pod "green -> env=prd
+Deploy "grey" -> env=prd 
 
+I used the follow command to create single pods with labels:
+kubectl run <pod_name> --image=<image> --labels="env=prd" --dry-run=client -o yaml > grey.yaml
+```
+
+
+1. How many pods exist in the "DEV" environment?
+```
+kubectl get pods --selector env=dev
+```
 ![Alt Text](/00-images/Scheduling/labels.PNG)
 
 
-2º How many pods exist in the "PRD" environment?
-
+2. How many pods exist in the "PRD" environment?
+```
+kubectl get pods --selector env=prd
+```
 ![Alt Text](/00-images/Scheduling/labels1.PNG)
 
 
-3º How many objects are in the "PRD" environment? (including PODS, replicas,services, etc)?
-
+3. How many objects are in the "PRD" environment? (including PODS, replicas, services, etc)?
+```
+kubectl get all --selector env=prd
+```
 ![Alt Text](/00-images/Scheduling/labels2.PNG)
 
 
-4º Identify the POD which is part of the "PRD" envinronment and of "FRONTEND" tier ?
-
+4. Identify the POD which is part of the "DEV" envinronment and of "DB" tier ?
+```
+kubectl get pods --selector env=dev,tier=db
+```
 ![Alt Text](/00-images/Scheduling/labels3.PNG)
 
 
 Note: 
-As We cans ee in the image below, the selector and the labels from the pod must match.
+As We can see in the image below, the selector and the labels from the pod must match.
 
 ![Alt Text](/00-images/Scheduling/labels4.PNG)
