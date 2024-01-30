@@ -13,7 +13,7 @@ kubectl run <pod_name> --image=<image> --labels="env=prd" --dry-run=client -o ya
 ```
 
 
-1. How many pods exist in the "DEV" environment?
+### 1. How many pods exist in the "DEV" environment?
 ```
 kubectl get pods --selector env=dev
 ```
