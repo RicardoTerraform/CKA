@@ -1,9 +1,15 @@
-1º How many nodes exist on the system?
+## DEMO
 
+### 1. How many nodes exist on the system?
+```
+kubectl get nodes
+```
 ![Alt Text](/00-images/Scheduling/taint.PNG)
 
-2º Do any Tains exist on worker1 node?
-
+### 2. Do any Tains exist on worker node "Sheu"?
+```
+kubectl describe node sheu
+```
 ![Alt Text](/00-images/Scheduling/taint1.PNG)
 
 3º Create a Taint on worker1 node with key=color, value=red and effect:NoSchedule

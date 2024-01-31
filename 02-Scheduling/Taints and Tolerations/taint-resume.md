@@ -36,7 +36,7 @@ Referir uma coisa importante, ao utilizarmos taints and toleration não signific
 Spec:
 	Container:
 		- Name: nginx-app
-		Image: nginx 
+		  image: nginx 
 	Tolerations:
 		- Key: "app"
 		Operator: "Equal"
