@@ -53,13 +53,15 @@ cat templates/bee.yaml
 
 ```
 nano templates/bee.yaml
-
-cat templates/bee.yaml
 ```
+
 ![Alt Text](/00-images/Scheduling/taint7.PNG)
 
+```
+cat templates/bee.yaml
+```
 ![Alt Text](/00-images/Scheduling/taint8.PNG)
-- NOTE: I edited the POD file (bee.yaml) and now we can see the POD has a toleration
+- NOTE: I edited the POD file (bee.yaml) and now we can see that the POD has a toleration (color=red)
 
 ```
 kubectl apply -f templates/bee.yaml
