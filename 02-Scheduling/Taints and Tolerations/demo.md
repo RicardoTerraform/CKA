@@ -6,25 +6,39 @@ kubectl get nodes
 ```
 ![Alt Text](/00-images/Scheduling/taint.PNG)
 
-### 2. Do any Tains exist on worker node "Sheu"?
+### 2. Do any Taints exist on worker node "Sheu"?
 ```
 kubectl describe node sheu
 ```
 ![Alt Text](/00-images/Scheduling/taint1.PNG)
 
-3º Create a Taint on worker1 node with key=color, value=red and effect:NoSchedule
-
+### 3. Create a Taint on worker node  "Sheu" with key=color, value=red and effect:NoSchedule
+```
+kubectl taint node sheu color=red:NoSchedule
+```
 ![Alt Text](/00-images/Scheduling/taint2.PNG)
 
+```
+kubectl describe node sheu
+```
 ![Alt Text](/00-images/Scheduling/taint3.PNG)
 
-4º Create a new pod with pod name mosquito and check what is the state of the pod?
+### 4. Create a new pod with pod name mosquito and check what is the state of the pod?
+```
+kubectl run mosquito --image=nginx
+```
+![Alt Text](/00-images/Scheduling/taint12.PNG)
 
+```
+kubectl run mosquito --image=nginx
+```
 ![Alt Text](/00-images/Scheduling/taint4.PNG)
 - State is PENDING
 
-5º Why do you think the pod is in a pending state?
-
+### 5. Why do you think the pod is in a pending state?
+```
+kubectl describe pod mosquito
+```
 ![Alt Text](/00-images/Scheduling/taint5.PNG)
 - Pod mosquito cannot toletare taint COLOR
 
