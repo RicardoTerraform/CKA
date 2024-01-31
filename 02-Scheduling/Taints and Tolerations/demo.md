@@ -12,7 +12,7 @@ kubectl describe node sheu
 ```
 ![Alt Text](/00-images/Scheduling/taint1.PNG)
 
-### 3. Create a Taint on worker node  "Sheu" with key=color, value=red and effect:NoSchedule
+### 3. Create a Taint on worker node "Sheu" with key=color, value=red and effect:NoSchedule
 ```
 kubectl taint node sheu color=red:NoSchedule
 ```
@@ -69,11 +69,20 @@ kubectl apply -f templates/bee.yaml
 kubectl get pods
 ```
 ![Alt Text](/00-images/Scheduling/taint9.PNG)
-- As the POD bee has the toleration, We can see the POD bee is running while pod mosquito still pending
+- As the POD bee has the toleration, We can see that the POD bee is running while pod mosquito still pending
 
-7º Remove the taint on node worker1
+### 7. Remove the taint on node worker "Sheu"
+```
+kubectl taint node sheu color=red:NoSchedule-
+
+kubectl describe node sheu
+```
 
 ![Alt Text](/00-images/Scheduling/taint10.PNG)
+- NOTE: We can see that the Taint on node sheu was removed
 
+```
+kubectl get pods
+```
 ![Alt Text](/00-images/Scheduling/taint11.PNG)
-- We can see the pod mosquito is running now because there is no taint on worker1 node
+- We can see that the pod mosquito is running now, because there is no Taint on worker node "Sheu", even if there are some tolerations in the PODS, It does not matter, the PODS will be scheduled on any available node. Only if there is a Taint on any node, the POD can be scheduled or not, as we saw in this demo so far.
