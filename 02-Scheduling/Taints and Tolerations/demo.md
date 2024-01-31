@@ -23,7 +23,7 @@ kubectl describe node sheu
 ```
 ![Alt Text](/00-images/Scheduling/taint3.PNG)
 
-### 4. Create a new pod with pod name mosquito and check what is the state of the pod?
+### 4. Create a new POD with pod name mosquito and check what is the state of the POD?
 ```
 kubectl run mosquito --image=nginx
 ```
@@ -42,18 +42,32 @@ kubectl describe pod mosquito
 ![Alt Text](/00-images/Scheduling/taint5.PNG)
 - Pod mosquito cannot toletare taint COLOR
 
-6º Create a new pod named bee which has a toleration set to the tain COLOR
+### 6. Create a new POD named bee which has a toleration set to the taint COLOR
+```
+kubectl run bee --image=nginx --dry-run=client -o yaml > templates/bee.yaml
 
+cat templates/bee.yaml
+```
 ![Alt Text](/00-images/Scheduling/taint6.PNG)
-- we cannot specify toleration in the command line.
+- NOTE: we cannot specify toleration in the command line. So let's open our yaml file and add more configurations
 
+```
+nano templates/bee.yaml
+
+cat templates/bee.yaml
+```
 ![Alt Text](/00-images/Scheduling/taint7.PNG)
 
 ![Alt Text](/00-images/Scheduling/taint8.PNG)
-- I edited the pod file and now we can see the pod has a toleration
+- NOTE: I edited the POD file (bee.yaml) and now we can see the POD has a toleration
 
+```
+kubectl apply -f templates/bee.yaml
+
+kubectl get pods
+```
 ![Alt Text](/00-images/Scheduling/taint9.PNG)
-- As the pod bee has the toleration, We can see the pod bee is running while pod mosquito still pending
+- As the POD bee has the toleration, We can see the POD bee is running while pod mosquito still pending
 
 7º Remove the taint on node worker1
 
