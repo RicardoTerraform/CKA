@@ -30,6 +30,12 @@ Para contar o número de pods podemos utilizar o seguinte comando
 ```
 #Kubectl get pods --no-headers | wc -l
 ```
+
+Criar pods em diferentes namespaces
+```
+#Kubectl get pod <pod_name> -n <namespace_name>
+```
+
 ### Delete a POD
 Eliminar e voltar a criar o mesmo POD
 ```
@@ -44,6 +50,11 @@ kubectl delete pod <PODNAME> -n <namespace>
 Forçar a eliminação de um POD
 ```
 kubectl delete pod <PODNAME> --grace-period=0 --force
+```
+
+### Create Namespace
+```
+kubectl create namespace <namespace_name>
 ```
 
 ########################################################################
