@@ -26,7 +26,7 @@ Referir uma coisa importante, ao utilizarmos taints and toleration não signific
 ## EXISTEM 3 TIPOS DE "TAINT-EFFECT":
 
 - noSchedule: Um pod "neutro" ou um POD que não tenha a mesma Label que o NODE, não irá entrar nesse NODE especifico, irá para outos
-- PreferNoSchecule: EX: O scheduler irá tentar evitar colocar o pod "neutro" num NODE com Lebel, mas não é garantido que um Node neutro ou com outra label não vá para esse NODE.
+- PreferNoSchecule: EX: O scheduler irá tentar evitar colocar o pod "neutro" num NODE com Label, mas não é garantido que um Node neutro ou com outra label não vá para esse NODE.
 - NoExecute: Novos pods não serão colocados no Node e se já existirem Pods no Node que não tenham as labels serão mandados para fora
 	
 

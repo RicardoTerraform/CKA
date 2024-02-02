@@ -60,8 +60,10 @@ Create a deployment
 #### TAINT & TOLERATION
 Remover Taint do NODE
 ```
-#Kubectl taint node node-name "colar aqui o tain-name todo"-node/node-name untainted
+#Kubectl taint node <node-name> "colar aqui o tain-name todo"-node/node-name untainted
+or
+#Kubectl taint nodes <node-name> <key=value>:<taint-effect>-
 
 Adicionar Taint ao NODE
-#Kubectl taint nodes node-name key=value:taint-effect
+#Kubectl taint nodes <node-name> <key=value>:<taint-effect>
 ```
