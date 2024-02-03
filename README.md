@@ -130,3 +130,14 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
 ![Alt Text](/00-images/kubeadm/adm1.PNG)
 
 ![Alt Text](/00-images/kubeadm/adm2.PNG)
+
+9. Step #9 Validate if when creating a pod and then try to delete it, check if the pod stucks in terminating status.
+
+EX: 
+```
+kubectl run mosquito --image=nginx
+
+kubectl delete pod mosquito
+```
+
+![Alt Text](/00-images/kubeadm/adm3.PNG)
