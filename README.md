@@ -137,7 +137,24 @@ EX:
 ```
 kubectl run mosquito --image=nginx
 
+kubectl get pods
+```
+![Alt Text](/00-images/kubeadm/adm3.PNG)
+
+
+```
 kubectl delete pod mosquito
 ```
+- After the command if the deliting pod stucks in terminating status let's follow the next steps:
 
-![Alt Text](/00-images/kubeadm/adm3.PNG)
+```
+sudo systemctl stop apparmor
+
+sudo systemctl disable apparmor
+
+sudo service docker restart
+
+reboot
+```
+
+- then try to delete again and it will work properly.
