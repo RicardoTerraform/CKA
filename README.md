@@ -13,7 +13,7 @@ I followed the step-by-step from this link:
 https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worker-nodes-to-the-cluster
 
 
-1. Step #1 Disable swap ON EACH NODE
+### 1. Step #1 Disable swap ON EACH NODE
 
     ```
     sudo swapoff -a
@@ -32,7 +32,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     *if one day I need the swap again I just need to run: sudo systemctl unmask swapfile.swap
     ```
 
-2. Step #2 Set up the IPV4 bridge ON EACH NODE
+### 2. Step #2 Set up the IPV4 bridge ON EACH NODE
 
     ```
     cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -54,7 +54,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     sudo sysctl --system
     ```
 
-3. Step #3 Install kubelet, kubeadm, and kubectl ON EACH NODE
+### 3. Step #3 Install kubelet, kubeadm, and kubectl ON EACH NODE
 
     ```
     sudo apt-get update
@@ -70,7 +70,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     sudo apt install -y kubelet kubeadm kubectl
     ```
 
-4. Step #4 Install Docker ON EACH NODE
+### 4. Step #4 Install Docker ON EACH NODE
 
     ```
     sudo apt install docker.io
@@ -85,7 +85,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     sudo systemctl enable kubelet.service
     ```
 
-5. Step #5 Initialize the Kubernetes cluster on THE MASTER NODE
+### 5. Step #5 Initialize the Kubernetes cluster on THE MASTER NODE
 
     ```
     sudo kubeadm config images pull
@@ -98,7 +98,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
     ```
 
-6. Step #6 Configure kubectl and Calico
+### 6. Step #6 Configure kubectl and Calico
 
     I followed this link: https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart
 
@@ -107,14 +107,14 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
 
     kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/custom-resources.yaml
     ```
-7. Step #7 Add worker nodes to the cluster
+### 7. Step #7 Add worker nodes to the cluster
 
     ```
     * Access the workers node and run the command that was given above:
     kubeadm join 192.168.*.*:6443 --token *********** \
         --discovery-token-ca-cert-hash sha256:853d83e8d5ad**************************
     ```
-8. Step #8 Verify the cluster and test
+### 8. Step #8 Verify the cluster and test
 
     ```
     *on master node:
@@ -131,7 +131,7 @@ https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worke
 
 ![Alt Text](/00-images/kubeadm/adm2.PNG)
 
-9. Step #9 Validate if when creating a pod and then try to delete it, check if the pod stucks in terminating status.
+### 9. Step #9 Validate if when creating a pod and then try to delete it, check if the pod stucks in terminating status.
 
 EX: 
 ```
