@@ -137,15 +137,13 @@ EX:
 ```
 kubectl run mosquito --image=nginx
 
+kubectl delete pod mosquito
+
 kubectl get pods
 ```
 ![Alt Text](/00-images/kubeadm/adm3.PNG)
 
-
-```
-kubectl delete pod mosquito
-```
-- After the command if the deliting pod stucks in terminating status let's follow the next steps:
+- After the command if the deleting pod stucks in terminating status let's follow the next steps:
 
 ```
 sudo systemctl stop apparmor
