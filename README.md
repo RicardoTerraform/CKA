@@ -7,7 +7,7 @@
 **Install Kubernetes on Ubuntu: Step-by-step process**
 1. 2x Raspberry Pi 5 RAW 8GB - Disk 64GB
 
-**Install Kubeadm**
+### Install Kubeadm
 
 I followed the step-by-step from this link:
 https://www.cherryservers.com/blog/install-kubernetes-on-ubuntu#step-9-add-worker-nodes-to-the-cluster
