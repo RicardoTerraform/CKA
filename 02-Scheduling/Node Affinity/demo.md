@@ -25,7 +25,7 @@ kubectl label node sheu color=red
 kubectl describe node sheu
 ```
 ![Alt Text](/00-images/Scheduling/affinity2.PNG)
-- the label color=red is on node sheu
+- R: the label color=red is on node sheu
 
 ### 4. Create a deployment named "affinity" with 3 replicas.
 ```
@@ -49,15 +49,24 @@ kubectl get pods
 ```
 ![Alt Text](/00-images/Scheduling/affinity10.PNG)
 
-4º Which nodes can the pods for the red deployment be placed on?
+### 5. Which nodes can the pods for the red deployment be placed on?
+```
+#worker node - sheu
+kubectl describe node sheu | grep Taint
 
-![Alt Text](/00-images/Scheduling/affinity4.PNG)
-- I created another node 'worker2' to be more effective in this demo
-
+#Master node - eusebio
+kubectl describe node eusebio | grep Taint
+```
 ![Alt Text](/00-images/Scheduling/affinity6.PNG)
-- Any node was Tainted, so the pods can be placed in any node available
+- R: In the worker node sheu there is no Taint, but in the the master node there is. So It means that all nodes are gonna be scheduled on worker node SHEU
 
-5º Set Node Affinity to the red deployment to place the pods on worker1 only
+```
+kubectl get pods -o wide
+```
+![Alt Text](/00-images/Scheduling/affinity11.PNG)
+- R: As we can see, evry single pod is placed on worker node SHEU
+
+### 6. Set Node Affinity to the red deployment to place the pods on worker1 only
 
 - Once I already set up the node worker1 with the label color=red we just have to edit the deployment file.
 ![Alt Text](/00-images/Scheduling/affinity7.PNG)
