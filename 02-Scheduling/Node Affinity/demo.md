@@ -122,6 +122,7 @@ kubectl describe pod affinity-66b7cff844-krkm7
 ```
 ![Alt Text](/00-images/Scheduling/affinity17.PNG)
 - R: Vemos que os pods não subiram porque o Affinity color=red que foi definido no pod não encontra nenhum Node com essa label. Sendo assim não é colocado em nenhum NODE fica em estado "pending".
+- Tivemos que eliminar o deployment e voltar a criar porque senão apesar dos pods já estarem dentro do Node não ia sortir efeito.
 
 
 
