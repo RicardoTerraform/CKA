@@ -78,3 +78,16 @@ or
 Adicionar Taint ao NODE
 #Kubectl taint nodes <node-name> <key=value>:<taint-effect>
 ```
+########################################################################
+#### Labels affinity
+Remover label do NODE
+```
+#Kubectl label nodes <node-name> <key>-
+ex: kubectl label node sheu color-
+```
+
+Adicionar Taint ao NODE
+```
+#Kubectl label nodes <node-name> <key>=<value>
+ex: kubectl label node sheu color=red
+```
