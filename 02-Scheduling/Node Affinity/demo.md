@@ -58,22 +58,71 @@ kubectl describe node sheu | grep Taint
 kubectl describe node eusebio | grep Taint
 ```
 ![Alt Text](/00-images/Scheduling/affinity6.PNG)
-- R: In the worker node sheu there is no Taint, but in the the master node there is. So It means that all nodes are gonna be scheduled on worker node SHEU
+- R: In the worker node sheu and in the master eusebio there is no Taint
 
 ```
 kubectl get pods -o wide
 ```
 ![Alt Text](/00-images/Scheduling/affinity11.PNG)
-- R: As we can see, evry single pod is placed on worker node SHEU
+- R: As we can see, the 3 pods from affinity are placed in the master and in the node
 
 ### 6. Set Node Affinity to the red deployment to place the pods on worker1 only
 
-- Once I already set up the node worker1 with the label color=red we just have to edit the deployment file.
+- Once I already set up the node SHEU with the label color=red, now I just have to edit the deployment affinity.yaml file.
+```
+#nano affinity.yaml 
+...
+spec:
+ affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: color
+                  operator: In
+                  values:
+                    - red
+```
 ![Alt Text](/00-images/Scheduling/affinity7.PNG)
-- The image above we can see the 3 pods where placed in each node available, let's place it only on worker1 node.
 
-![Alt Text](/00-images/Scheduling/affinity8.PNG)
-- I added some properties in the deployred file, after that I replaced the deployment again(delete and create), and as we can see now the 3 pods are placed in the worker1 node
+```
+kubectl apply -f affinity.yaml
+```
+![Alt Text](/00-images/Scheduling/affinity12.PNG)
+
+```
+kubectl get pods -o wide
+```
+![Alt Text](/00-images/Scheduling/affinity13.PNG)
+- As we can see now, the 3 pods are placed in the worker node SHEU
+
+### 7. What happen if you remove the label "color=red" from worker node SHEU ?
+```
+kubectl label node sheu color-
+```
+![Alt Text](/00-images/Scheduling/affinity14.PNG)
+
+```
+#Eliminar o deploy affinity
+kubectl delete deploy affinity
+
+#voltar a criar
+kubectl apply -f affinity.yaml
+```
+![Alt Text](/00-images/Scheduling/affinity15.PNG)
+
+```
+kubectl get pods -o wide
+```
+![Alt Text](/00-images/Scheduling/affinity16.PNG)
+- R: Verificamos que os pods estão em estado "pending"
+
+```
+kubectl describe pod affinity-66b7cff844-krkm7
+```
+![Alt Text](/00-images/Scheduling/affinity17.PNG)
+- R: Vemos que os pods não subiram porque o Affinity color=red que foi definido no pod não encontra nenhum Node com essa label. Sendo assim não é colocado em nenhum NODE fica em estado "pending".
 
 
 
+- Conclusão: Se quisermos que um determinado POD seja colocado num Node especifico utilizamos o affinity.
