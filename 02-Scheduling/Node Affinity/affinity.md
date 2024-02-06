@@ -15,13 +15,13 @@ Spec:
 	Container:
 		- Name: nginx-app
 		Image: nginx 
-	Affinity:
+	affinity:
 		nodeAffinity:
 			requiredDuringSchedulingIgnoredDuringExecution:
 				nodeSelectorTerms:
 					- matchExpressions:
 						- Key: size
-						  Operator: In
+						  Operator: <In> / <NotIn> /<Exists> / etc
 						  Values: 
 							- Large
 ```
@@ -33,5 +33,6 @@ Spec:
 - Com o affinity a única coisa que garante é que se um pod tiver a mesma label que um determiando node ele vai ser automáticamente colocado lá. Mas não garante que outros pods sem label também sejam colocados lá
 
 **COMANDOS:**
-
-Kubectl label node 'nodename' color=blue
+```
+Kubectl label node <nodename> color=blue
+```
