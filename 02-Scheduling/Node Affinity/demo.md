@@ -1,21 +1,53 @@
-1º How many labels exist on worker1 node ?
+## DEMO
 
+### 1. How many labels exist on node SHEU ?
+```
+kubectl describe node sheu
+```
 ![Alt Text](/00-images/Scheduling/affinity.PNG)
-- 7 labels
+- R: 5 labels
 
-2º Apply a label color=red to node worker1
+### 2. What is the value set to the label "beta.kubernetes.io/arch" on node SHEU
+```
+kubectl describe node sheu
+```
+![Alt Text](/00-images/Scheduling/affinity9.PNG)
+- R: arm64
 
+
+### 3. Apply a label color=red to node SHEU
+```
+kubectl label node sheu color=red
+```
 ![Alt Text](/00-images/Scheduling/affinity1.PNG)
 
+```
+kubectl describe node sheu
+```
 ![Alt Text](/00-images/Scheduling/affinity2.PNG)
-- the label color=red is on node worker1
+- the label color=red is on node sheu
 
-3º Create a deployment named red with 3 replicas.
+### 4. Create a deployment named "affinity" with 3 replicas.
+```
+#only output
+kubectl create deployment affinity --image=nginx --replicas=3 --dry-run=client -o yaml
 
+kubectl create deployment affinity --image=nginx --replicas=3 --dry-run=client -o yaml > affinity.yaml
+```
 ![Alt Text](/00-images/Scheduling/affinity3.PNG)
 
+```
+kubectl apply -f affinity.yaml
+```
 ![Alt Text](/00-images/Scheduling/affinity5.PNG)
 - As we can see a deployment with 3 replicas has been created
+
+```
+kubectl get deploy
+
+kubectl get pods
+```
+![Alt Text](/00-images/Scheduling/affinity10.PNG)
 
 4º Which nodes can the pods for the red deployment be placed on?
 
