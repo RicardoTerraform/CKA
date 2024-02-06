@@ -64,9 +64,9 @@ kubectl describe node eusebio | grep Taint
 kubectl get pods -o wide
 ```
 ![Alt Text](/00-images/Scheduling/affinity11.PNG)
-- R: As we can see, the 3 pods from affinity are placed in the master and in the node
+- R: As we can see, the 3 pods from deploy "affinity" are placed in the master and in the worker node(eusebio & sheu)
 
-### 6. Set Node Affinity to the red deployment to place the pods on worker1 only
+### 6. Set Node Affinity to the "affinity"" deployment to place the pods on Node SHEU only
 
 - Once I already set up the node SHEU with the label color=red, now I just have to edit the deployment affinity.yaml file.
 ```
